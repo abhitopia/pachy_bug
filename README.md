@@ -30,7 +30,7 @@ pachctl get-logs --job <last-job-id>
 
 # modify the configuration file
 # change pipeline.json value from 3 to 10 and commit the configuration file again
-pachctl put-file numbers master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply.json
+pachctl put-file poly master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply.json
 
 ## Now you will notice failed job.
 pachctl get-logs --job <last-job-id>
