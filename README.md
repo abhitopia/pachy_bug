@@ -34,10 +34,8 @@ pachctl get-logs --job <last-job-id>
 pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply.json
 
 
-# modify the configuration file
-vim configurations/x_multiply/x_multiply.json
-# change configurations/x_multiply/x_multiply.json value from 3 to 10 and commit the configuration file again
-pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply.json
+# replace configurations/x_multiply/x_multiply.json with configurations/x_multiply/x_multiply_changed.json
+pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply_changed.json
 
 
 # check the logs of the output 
