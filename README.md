@@ -26,17 +26,23 @@ pachctl create-pipeline -f pipeline.json
 
 # check the logs of the output 
 pachctl get-logs --job <last-job-id>
-## TODO (agis)
+
+# directories found by glob in script:
+# ['/pfs/', '/pfs/numbers', '/pfs/numbers/input.json', '/pfs/config', '/pfs/config/configurations', '/pfs/config/configurations/x_multiply', '/pfs/config/configurations/x_multiply/x_multiply.json', '/pfs/out']
+
+pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply.json
+
 
 # modify the configuration file
-# change pipeline.json value from 3 to 10 and commit the configuration file again
-pachctl put-file poly master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply.json
+# change configurations/x_multiply/x_multiply.json value from 3 to 10 and commit the configuration file again
+pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply.json
 
-## Now you will notice failed job.
+
+# check the logs of the output 
 pachctl get-logs --job <last-job-id>
-## TODO(agis)
 
-
-
+# the job will fail the error being: IsADirectoryError: [Errno 21] Is a directory: '/pfs/config/configurations/x_multiply/x_multiply.json'
+# looking at the glob of directories in the script we now see
+#['/pfs/', '/pfs/numbers', '/pfs/numbers/input.json', '/pfs/config', '/pfs/config/configurations', '/pfs/config/configurations/x_multiply', '/pfs/config/configurations/x_multiply/x_multiply.json', '/pfs/config/configurations/x_multiply/x_multiply.json/configurations', '/pfs/config/configurations/x_multiply/x_multiply.json/configurations/x_multiply', '/pfs/config/configurations/x_multiply/x_multiply.json/configurations/x_multiply/x_multiply.json', '/pfs/out', '/pfs/out/output.json']
 
 ```
