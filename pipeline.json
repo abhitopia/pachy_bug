@@ -1,1 +1,39 @@
-
+{
+    "incremental": true,
+    "transform": {
+        "image": "agispof/simpletest:master",
+        "cmd": [
+            "python",
+            "/root/service.py",
+            "--input_dir",
+            "/pfs/numbers",
+            "-c",
+            "/pfs/config/configurations/x_multiply/x_multiply.json",
+            "--output_dir",
+            "/pfs/out"
+        ]
+    },
+    "pipeline": {
+        "name": "_poly_x_multiply"
+    },
+    "input": {
+        "cross": [
+            {
+                "atom": {
+                    "name": "numbers",
+                    "glob": "/*",
+                    "repo": "numbers",
+                    "branch": "master"
+                }
+            },
+            {
+                "atom": {
+                    "name": "config",
+                    "glob": "/configurations/x_multiply/x_multiply.json",
+                    "repo": "poly",
+                    "branch": "master"
+                }
+            }
+        ]
+    }
+}
