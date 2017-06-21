@@ -13,6 +13,7 @@ pachctl port-forward &
 
 
 # Put some data in repo numbers
+pachctl delete-all # press y
 pachctl create-repo numbers
 pachctl put-file numbers master input.json -c -f input.json
 
