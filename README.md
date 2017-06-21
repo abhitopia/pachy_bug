@@ -31,8 +31,6 @@ pachctl get-logs --job <last-job-id>
 # directories found by glob in script:
 # ['/pfs/', '/pfs/numbers', '/pfs/numbers/input.json', '/pfs/config', '/pfs/config/configurations', '/pfs/config/configurations/x_multiply', '/pfs/config/configurations/x_multiply/x_multiply.json', '/pfs/out']
 
-pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply.json
-
 
 # replace configurations/x_multiply/x_multiply.json with configurations/x_multiply/x_multiply_changed.json
 pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply_changed.json
