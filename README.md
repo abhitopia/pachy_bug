@@ -18,7 +18,7 @@ pachctl put-file numbers master input.json -c -f input.json
 
 # Put the configuration file
 pachctl create-repo poly
-pachctl put-file numbers master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply.json
+pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply.json
 
 # deploy the pipeline
 pachctl start-pipeline -f pipeline.json
