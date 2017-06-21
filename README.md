@@ -35,6 +35,7 @@ pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f co
 
 
 # modify the configuration file
+vim configurations/x_multiply/x_multiply.json
 # change configurations/x_multiply/x_multiply.json value from 3 to 10 and commit the configuration file again
 pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply.json
 
