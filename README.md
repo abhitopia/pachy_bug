@@ -21,7 +21,7 @@ pachctl create-repo poly
 pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply.json
 
 # deploy the pipeline
-pachctl start-pipeline -f pipeline.json
+pachctl create-pipeline -f pipeline.json
 
 
 # check the logs of the output 
