@@ -1,0 +1,39 @@
+{
+    "transform": {
+        "image": "agispof/simpletest:master",
+        "cmd": [
+            "python",
+            "/root/service.py",
+            "--input_dir",
+            "/pfs/numbers",
+            "-c",
+            "/pfs/config/configurations/b_times_x/b_times_x.json",
+            "--output_dir",
+            "/pfs/out"
+        ]
+    },
+    "pipeline": {
+        "name": "_test_w_b_times_x"
+    },
+    "input": {
+        "cross": [
+            {
+                "atom": {
+                    "repo": "numbers",
+                    "branch": "master",
+                    "glob": "/*",
+                    "name": "numbers"
+                }
+            },
+            {
+                "atom": {
+                    "repo": "test_w",
+                    "branch": "master",
+                    "glob": "/configurations/b_times_x/*",
+                    "name": "config"
+                }
+            }
+        ]
+    },
+    "incremental": true
+}

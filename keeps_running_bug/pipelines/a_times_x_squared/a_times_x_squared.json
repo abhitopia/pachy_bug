@@ -1,0 +1,39 @@
+{
+    "transform": {
+        "image": "agispof/simpletest:master",
+        "cmd": [
+            "python",
+            "/root/service.py",
+            "--input_dir",
+            "/pfs/x_squared",
+            "-c",
+            "/pfs/config/configurations/a_times_x_squared/a_times_x_squared.json",
+            "--output_dir",
+            "/pfs/out"
+        ]
+    },
+    "pipeline": {
+        "name": "_test_w_a_times_x_squared"
+    },
+    "input": {
+        "cross": [
+            {
+                "atom": {
+                    "repo": "_test_w_x_squared",
+                    "branch": "master",
+                    "glob": "/",
+                    "name": "x_squared"
+                }
+            },
+            {
+                "atom": {
+                    "repo": "test_w",
+                    "branch": "master",
+                    "glob": "/configurations/a_times_x_squared/*",
+                    "name": "config"
+                }
+            }
+        ]
+    },
+    "incremental": true
+}
