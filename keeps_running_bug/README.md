@@ -1,4 +1,6 @@
 ```bash
+## assumes all below commands are run from pachy_bug/keeps_running_bug/
+
 # start afresh
 minikube delete
 minikube start
