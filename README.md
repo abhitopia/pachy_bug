@@ -24,14 +24,14 @@ Where
  
 ## Use case
 - Commit all the data
-  - `commit(D, input.json)`
+  - `D{1} = commit(D, input.json)`
   
 - Commit all the config 
-  - `commit(C, p_config.txt, q_config.txt, r_config.txt)`
+  - `C{1} = commit(C, p_config.txt, q_config.txt, r_config.txt)`
   
 - Deploy all the pipelines
   - start-pipeline(p)
-    - Job: `P{1}[/] = p(C{1}[p_config.txt], D{1}[/])`
+    - Job: `P{1} = p(C{1}[p_config.txt], D{1}[/])`
   - start-pipeline(q)
     - Job: `Q{1} = q(C(1)[q_config.txt], P{1}[/])`
   - start-pipeline(r)
