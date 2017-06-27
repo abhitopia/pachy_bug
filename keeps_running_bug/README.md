@@ -1,3 +1,4 @@
+```bash
 #first go to numbers folder 
 cd ../numbers
 
@@ -13,4 +14,4 @@ pachctl finish-commit test_w <commit-id>
 #Now commit everything in this folder into the `test_w` including the folder `configurations` and `pipelines`
 
 #Now deploy all the pipelines inside the folder `/pipelines/*/*.json`
-
+```bash
