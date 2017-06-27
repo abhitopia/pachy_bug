@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import argparse
+import glob
 import json
 import os
 
@@ -31,10 +32,14 @@ if __name__ == '__main__':
     data = load_files(input_dir=args.input_dir)
     data2 = load_files(input_dir=args.input_dir_2)
     result = {}
+
+    directory = glob.glob("/pfs/**", recursive=True)
+    print(directory)
     if len(data2) == len(data) > 0:
         result = {"values": [data[i] + data2[i] for i in range(len(data))]}
         json.dump(result, open(os.path.join(args.output_dir, "output.json"), 'w'))
-    elif len(data) > 0 and os.path.exists(args.config) and args.input_dir_2 == "":
+    elif len(data) > 0 and os.path.isfile(args.config) and args.input_dir_2 == "":
+
         config = json.load(open(args.config, 'r'))
         if config['action'] == 'add':
             result = {"values": [i + config['value'] for i in data]}
@@ -45,3 +50,6 @@ if __name__ == '__main__':
         else:
             result = {"values": data}
         json.dump(result, open(os.path.join(args.output_dir, "output.json"), 'w'))
+        print("job completed successfuly")
+    else:
+        print("nothing happened with {} being a file: {}".format(args.config, os.path.isfile(args.config)))

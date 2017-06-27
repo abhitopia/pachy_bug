@@ -13,6 +13,7 @@ pachctl port-forward &
 
 
 # Put some data in repo numbers
+pachctl delete-all # press y
 pachctl create-repo numbers
 pachctl put-file numbers master input.json -c -f input.json
 
@@ -30,12 +31,9 @@ pachctl get-logs --job <last-job-id>
 # directories found by glob in script:
 # ['/pfs/', '/pfs/numbers', '/pfs/numbers/input.json', '/pfs/config', '/pfs/config/configurations', '/pfs/config/configurations/x_multiply', '/pfs/config/configurations/x_multiply/x_multiply.json', '/pfs/out']
 
-pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply.json
 
-
-# modify the configuration file
-# change configurations/x_multiply/x_multiply.json value from 3 to 10 and commit the configuration file again
-pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply.json
+# replace configurations/x_multiply/x_multiply.json with configurations/x_multiply/x_multiply_changed.json
+pachctl put-file poly  master configurations/x_multiply/x_multiply.json -c -f configurations/x_multiply/x_multiply_changed.json
 
 
 # check the logs of the output 
