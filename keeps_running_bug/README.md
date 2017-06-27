@@ -1,3 +1,22 @@
+# Introduction to how to use pachyderm to run dummy DAG
+In the following example, we intend to create a polynomical of the form
+`ax^2+bx+c`
+
+The polynomial coefficient `a`, `b` and `c` are supplied via `configurations/*/*.json` files for each pipeline. Following pipelines exist
+- pipelines/x_squared/x_squared.json : squares x, config empty
+- pipelines/a_times_x_squared/a_times_x_squared.json: multiplies `a` whose value is determined by config
+- pipelines/b_times_x/b_times_x.json: multiplies `b` whose value is determined by config
+- pipelines/a_times_x_squared_plus_b_times_x/a_times_x_squared_plus_b_times_x.json: adds two inputs.
+- pipelines/a_times_x_squared_plus_b_times_x_plus_c/a_times_x_squared_plus_b_times_x_plus_c.json adds to input a `c` whose value is determined by config.
+
+# What is expected from pachyderm
+- If I modify any config, then it is to only run pipelines that are downstream in DAG. For example, if `b` is modified, then
+**ONLY** following pipelines **SHOULD** run -
+  - b_times_x.json
+  - a_times_x_squared_plus_b_times_x.json
+  - a_times_x_squared_plus_b_times_x_plus_c.json
+
+# Below is the way to reproduce the bug.
 ```bash
 ## assumes all below commands are run from pachy_bug/keeps_running_bug/
 
@@ -41,4 +60,6 @@ ID                                   OUTPUT COMMIT                              
 000ead86-4164-41a0-8d91-dd26a5441b0e _test_w_x_squared/88991af6559c455d81e1ebacab78492c         3 minutes ago Less than a second 0       0 / 0    success
 8671d5b4-da08-4516-b92e-7cc6b1165768 _test_w_x_squared/f6702dac40e84a3c8c523044046a8862         3 minutes ago Less than a second 0       0 / 0    success
 ```
+
+
 
