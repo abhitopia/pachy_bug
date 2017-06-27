@@ -12,12 +12,15 @@ pachctl start-commit numbers master
 pachctl finish-commit numbers <commit-id>
 pachctl put-file numbers master -c input.json -f input.json
 
+# sanity check
+pachctl list-commit numbers
+
 # Create test_w repo like following
 cd ../keeps_running_bug
 pachctl create-repo test_w
 pachctl start-commit test_w master
 pachctl finish-commit test_w <commit-id>
-pachctl put-file -r test_w master -f .
+pachctl put-file -r test_w master -c -f .
 
 #Now deploy all the pipelines inside the folder `/pipelines/*/*.json`
 ```bash
