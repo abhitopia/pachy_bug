@@ -23,4 +23,9 @@ pachctl finish-commit test_w <commit-id>
 pachctl put-file -r test_w master -c -f .
 
 #Now deploy all the pipelines inside the folder `/pipelines/*/*.json`
+pachctl create-pipeline -f pipelines/x_squared/x_squared.json
+pachctl create-pipeline -f pipelines/a_times_x_squared/a_times_x_squared.json
+pachctl create-pipeline -f pipelines/b_times_x/b_times_x.json
+pachctl create-pipeline -f pipelines/a_times_x_squared_plus_b_times_x/a_times_x_squared_plus_b_times_x.json
+pachctl create-pipeline -f pipelines/a_times_x_squared_plus_b_times_x_plus_c/a_times_x_squared_plus_b_times_x_plus_c.json
 ```
