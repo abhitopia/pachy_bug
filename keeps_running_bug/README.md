@@ -23,4 +23,4 @@ pachctl finish-commit test_w <commit-id>
 pachctl put-file -r test_w master -c -f .
 
 #Now deploy all the pipelines inside the folder `/pipelines/*/*.json`
-```bash
+```
