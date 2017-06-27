@@ -2,7 +2,7 @@
 # start afresh
 minikube delete
 minikube start
-pachctl local deploy
+pachctl deploy local
 pachctl port-forward &
 
 # Create numbers repo like following
