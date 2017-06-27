@@ -1,17 +1,23 @@
 ```bash
-#first go to numbers folder 
+# start afresh
+minikube delete
+minikube start
+pachctl local deploy
+pachctl port-forward &
+
+# Create numbers repo like following
 cd ../numbers
+pachctl create-repo numbers
+pachctl start-commit numbers master
+pachctl finish-commit numbers <commit-id>
+pachctl put-file numbers master -c input.json -f input.json
 
-#then execute all the commands in ../numbers/README.md
-
-#change back to keeps_running_bug directory
+# Create test_w repo like following
 cd ../keeps_running_bug
-
 pachctl create-repo test_w
 pachctl start-commit test_w master
 pachctl finish-commit test_w <commit-id>
-
-#Now commit everything in this folder into the `test_w` including the folder `configurations` and `pipelines`
+pachctl put-file -r test_w master -f .
 
 #Now deploy all the pipelines inside the folder `/pipelines/*/*.json`
 ```bash
