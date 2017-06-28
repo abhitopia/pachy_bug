@@ -40,3 +40,7 @@ Where
 - Modify `q_config.txt`, should trigger following jobs
   - Job: `Q{2} = q(C{1}[q_config.txt], P{1}[/])`
   - Job: `R{2} = r(C{2}[r_config.txt], Q{2}[/])`
+  
+  # Unclear questions/doubts/bugs
+  - if pipeline `p` always outputs `a.txt`. Will every subsequence trigger of job `p` overwrite `a.txt` or append to it. If it appends, as is Pachyderm's default behaviour, then how do we make sure a new file is overwrites the old file.
+  
