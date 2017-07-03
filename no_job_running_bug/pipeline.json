@@ -1,0 +1,32 @@
+{
+    "pipeline": {
+        "name": "test_pipeline1"
+    },
+    "transform": {
+        "cmd": [
+            "cat",
+            "/pfs/input2/file2",
+            "/pfs/input3/file3"
+        ]
+    },
+    "input": {
+        "cross": [
+            {
+                "atom": {
+                    "branch": "master",
+                    "repo": "repo2",
+                    "glob": "/",
+                    "name": "input2"
+                }
+            },
+            {
+                "atom": {
+                    "branch": "_test",
+                    "repo": "repo3",
+                    "glob": "/",
+                    "name": "input3"
+                }
+            }
+        ]
+    }
+}
